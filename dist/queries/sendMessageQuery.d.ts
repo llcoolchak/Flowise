@@ -1,7 +1,8 @@
-import { MessageType } from '@/components/Bot';
+import { FileUpload, MessageType } from '@/components/Bot';
 export type IncomingInput = {
     question: string;
     history: MessageType[];
+    uploads?: FileUpload[];
     overrideConfig?: Record<string, unknown>;
     socketIOClientId?: string;
     chatId?: string;
@@ -13,6 +14,10 @@ export type MessageRequest = {
     body?: IncomingInput;
 };
 export declare const sendMessageQuery: ({ chatflowid, apiHost, body }: MessageRequest) => Promise<{
+    data?: any;
+    error?: Error | undefined;
+}>;
+export declare const getChatbotConfig: ({ chatflowid, apiHost }: MessageRequest) => Promise<{
     data?: any;
     error?: Error | undefined;
 }>;
